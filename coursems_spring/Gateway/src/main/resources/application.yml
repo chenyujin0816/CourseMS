@@ -1,0 +1,50 @@
+server:
+  port: 8888
+spring:
+  application:
+    name: gateway
+  cloud:
+    gateway:
+      httpclient:
+        response-timeout: PT30S
+      discovery:
+        locator:
+          enabled: true
+          lower-case-service-id: true
+      routes:
+        - id: user
+          uri: lb://user-service
+          predicates: Path=/user/**
+        - id: forumpost
+          uri: lb://forum-service
+          predicates: Path=/forumPost/**
+        - id: commentpost
+          uri: lb://forum-service
+          predicates: Path=/commentPost/**
+        - id: assignment
+          uri: lb://course-service
+          predicates: Path=/assignment/**
+        - id: attendCourse
+          uri: lb://course-service
+          predicates: Path=/attendCourse/**
+        - id: course
+          uri: lb://course-service
+          predicates: Path=/course/**
+        - id: file
+          uri: lb://course-service
+          predicates: Path=/file/**
+        - id: news
+          uri: lb://course-service
+          predicates: Path=/news/**
+        - id: studentcourse
+          uri: lb://course-service
+          predicates: Path=/studentcourse/**
+        - id: client
+          uri: lb://client
+          predicates: Path=/client/**
+eureka:
+  client:
+    service-url:
+      defaultZone: http://192.168.163.128:8761/eureka/
+  instance:
+    prefer-ip-address: true

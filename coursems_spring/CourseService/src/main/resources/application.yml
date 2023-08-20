@@ -1,0 +1,27 @@
+server:
+  port: 8030
+spring:
+  application:
+    name: course-service
+  datasource:
+    driver-class-name: org.postgresql.Driver
+    url: jdbc:postgresql://123.249.117.36:26000/course?currentSchema=public
+    username: dbuser
+    password: "openGauss@123"
+mybatis-plus:
+  mapper-locations: classpath*:/mapper/**Mapper.xml
+#shiro-redis:
+#  enable: true
+#  redis-manager:
+#    host: 127.0.0.1:6379
+eureka:
+  client:
+    service-url:
+      defaultZone: http://192.168.163.128:8761/eureka/
+  instance:
+    prefer-ip-address: true
+#markerhub:
+#  jwt:
+#    secret: f4e2e52034348f86b67cde581c0f9eb5
+#    expire: 604800
+#    header: Authorization
